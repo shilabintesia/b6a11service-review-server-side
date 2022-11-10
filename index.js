@@ -36,7 +36,7 @@ async function run() {
             const products = await cursor.toArray();
             res.send(products)
         })
-        
+
         // delete products
         app.delete('/products/:id', async (req, res) => {
             const id = req.params.id
@@ -44,12 +44,14 @@ async function run() {
             const result = await ProductCollection.deleteOne(query)
             res.send(result)
         })
+
         // post database
         app.post('/products', async (req, res) => {
             const newService = req.body
             const result = await ProductCollection.insertOne(newService)
             res.send(result)
         })
+        
         // get single Product(purchage):-
         app.get('/products/:id', async (req, res) => {
             const id = req.params.id;
