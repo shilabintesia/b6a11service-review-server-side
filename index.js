@@ -162,7 +162,7 @@ async function run() {
             const isAdmin = user?.role === 'admin';
             res.send({ admin: isAdmin })
         })
-        
+
         // update profile post database:-
         app.post('/updateProfile', async (req, res) => {
             const order = req.body
@@ -180,6 +180,7 @@ run().catch(console.dir);
 app.get('/', (req, res) => {
     res.send('EatPrayLove!')
 })
+
 
 app.listen(port, () => {
     console.log(`EatPrayLove listening on port ${port}`)
