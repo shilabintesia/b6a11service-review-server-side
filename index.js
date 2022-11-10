@@ -74,7 +74,7 @@ async function run() {
             const result = await ReviewCollection.insertOne(newReviews)
             res.send(result)
         })
-        
+
         // update Purchage item:-
         // app.put('/products/:id', async (req, res) => {
         //     const id = req.params.id;
@@ -92,20 +92,28 @@ async function run() {
         //     const result = await ProductCollection.updateOne(filter, updateDoc, options)
         //     res.send(result)
         // })
+
+
         // order collection API:-
         app.post('/orders', async (req, res) => {
             const order = req.body
             const result = await OrderCollection.insertOne(order)
             res.send(result)
         })
+
+    
         // get order item:-
+
         app.get('/orders', async (req, res) => {
             const email = req.query.email;
             const query = { email: email };
             const bookings = await OrderCollection.find(query).toArray();
             res.send(bookings)
         })
+
+
         // delete order item:-
+
         app.delete('/orders/:id', async (req, res) => {
             const id = req.params.id
             console.log(id)
@@ -114,6 +122,7 @@ async function run() {
             const result = await OrderCollection.deleteOne(query)
             res.send(result)
         })
+
         // insert user (login/register) information:-
         app.put('/user/:email', async (req, res) => {
             const email = req.params.email
@@ -127,11 +136,13 @@ async function run() {
             const token = process.env.ACCESS_TOKEN_SECRET
             res.send({ result, token })
         })
+
         // get all users:-
         app.get('/user', async (req, res) => {
             const users = await userCollection.find().toArray();
             res.send(users);
         });
+
         // Making Admin:-
         app.put('/user/admin/:email', async (req, res) => {
             const email = req.params.email
@@ -143,6 +154,7 @@ async function run() {
             const result = await userCollection.updateOne(filter, updateDoc)
             res.send(result)
         })
+
         // secure admin(if admin he makes a admin):-
         app.get('/admin/:email', async (req, res) => {
             const email = req.params.email;
@@ -150,6 +162,7 @@ async function run() {
             const isAdmin = user?.role === 'admin';
             res.send({ admin: isAdmin })
         })
+        
         // update profile post database:-
         app.post('/updateProfile', async (req, res) => {
             const order = req.body
