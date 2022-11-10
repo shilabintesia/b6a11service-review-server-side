@@ -13,9 +13,7 @@ app.use(express.json())
 // user : EatPrayLove
 // password: tIQDBhzmQKtEJtOG
 
-
 const uri = "mongodb+srv://EatPrayLove:tIQDBhzmQKtEJtOG@cluster0.cm2i4sv.mongodb.net/?retryWrites=true&w=majority";
-
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
