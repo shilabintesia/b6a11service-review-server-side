@@ -18,6 +18,7 @@ const uri = "mongodb+srv://EatPrayLove:tIQDBhzmQKtEJtOG@cluster0.cm2i4sv.mongodb
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
+
 async function run() {
     try {
         await client.connect();
@@ -35,6 +36,7 @@ async function run() {
             const products = await cursor.toArray();
             res.send(products)
         })
+        
         // delete products
         app.delete('/products/:id', async (req, res) => {
             const id = req.params.id
