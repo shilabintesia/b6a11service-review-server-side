@@ -51,7 +51,7 @@ async function run() {
             const result = await ProductCollection.insertOne(newService)
             res.send(result)
         })
-        
+
         // get single Product(purchage):-
         app.get('/products/:id', async (req, res) => {
             const id = req.params.id;
@@ -59,6 +59,7 @@ async function run() {
             const result = await ProductCollection.findOne(query)
             res.send(result)
         })
+
         // get all reviews:-
         app.get('/reviews', async (req, res) => {
             const query = {}
@@ -66,12 +67,14 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
+
         // post  review:-
         app.post('/reviews', async (req, res) => {
             const newReviews = req.body
             const result = await ReviewCollection.insertOne(newReviews)
             res.send(result)
         })
+        
         // update Purchage item:-
         // app.put('/products/:id', async (req, res) => {
         //     const id = req.params.id;
